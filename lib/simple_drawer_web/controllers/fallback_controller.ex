@@ -22,10 +22,17 @@ defmodule SimpleDrawerWeb.FallbackController do
     |> render(:"404")
   end
   # This clause is an example of how to handle resources that cannot be found.
+  def call(conn, {:error, :drawer_not_found}) do
+    conn
+    |> put_status(:unprocessable_entity)
+    |> put_view(SimpleDrawerWeb.ErrorView)
+    |> render("error_drawer_not_found.json", %{})
+  end
+  # This clause is an example of how to handle resources that cannot be found.
   def call(conn, {:error, :drawer_not_finished_yet}) do
     conn
     |> put_status(:unprocessable_entity)
     |> put_view(SimpleDrawerWeb.ErrorView)
-    |> render("error.json", %{})
+    |> render("error_drawer_not_finished_yet.json", %{})
   end
 end

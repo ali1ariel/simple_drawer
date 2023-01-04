@@ -40,9 +40,14 @@ defmodule SimpleDrawer.Drawers do
   @doc """
     Get the informations about the drawer and returns with the
   """
-  def get_drawer_info!(id) do
-    Repo.get!(Drawer, id)
-    |> Repo.preload([:winner])
+  def get_drawer_info(id) do
+    case Repo.get(Drawer, id) do
+      %Drawer{} = drawer ->
+        {:ok, drawer
+        |> Repo.preload([:winner])}
+      nil ->
+        {:error, :drawer_not_found}
+    end
   end
 
   @doc """

@@ -7,12 +7,12 @@ defmodule SimpleDrawerWeb.Router do
 
   scope "/api", SimpleDrawerWeb do
     pipe_through :api
-    resources "/drawers", DrawerController, except: [:new, :edit]
+    resources "/drawers", DrawerController, except: [:new, :edit, :update, :index, :delete]
 
     post "/drawers/subscribe-user", DrawerController, :subscribe_user
     get "/drawers/:id/results", DrawerController, :show_drawer_info
 
-    resources "/users", UserController, except: [:new, :edit]
+    resources "/users", UserController, except: [:new, :edit, :update, :index, :delete]
   end
 
   # Enables LiveDashboard only for development

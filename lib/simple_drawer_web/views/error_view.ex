@@ -15,7 +15,11 @@ defmodule SimpleDrawerWeb.ErrorView do
   end
 
 
-  def render("error.json", _assigns) do
+  def render("error_drawer_not_finished_yet.json", _assigns) do
     %{errors: %{detail: "the given drawer is not finished yet."}}
+  end
+
+  def render("error_drawer_not_found.json", _assigns) do
+    %{errors: %{detail: "the given drawer is not found."}}
   end
 end
