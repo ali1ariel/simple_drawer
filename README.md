@@ -34,6 +34,7 @@ Agora você pode acessar [`localhost:4000/api`](http://localhost:4000/api) do se
 ## Rotas - "/drawers"
 
 ### Criar um sorteio
+### * Importante: para testar um dos requisitos do sistema, que é a validação de data da inscrição do usuário (usuário não pode se inscrever em sorteio encerrado), é necessário criar um sorteio com data anterior à atual, por isso é necessário comentar a validação de data do schema de drawer.
     [POST] - ""
         - body:
             {
